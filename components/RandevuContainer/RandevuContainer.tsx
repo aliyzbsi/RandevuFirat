@@ -11,7 +11,7 @@ import { RandevuType } from '../../types';
 const RandevuContainer = ({randevu}:RandevuProps) => {
   return (
     <View style={styles.container}>
-       <LeftContainer RandevuDate={randevu}/>
+       <LeftContainer RandevuDate={randevu} />
        <MainContainer randevuData={randevu}/>
     </View>
   )
@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
       borderWidth:0.2,
       borderRadius:15,
       height:100,
+      width:280,
       marginRight:30,
-      marginLeft:30,
+      marginLeft:50,
       margin:5,
 
     },
