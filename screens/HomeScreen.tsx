@@ -1,5 +1,5 @@
 
-import React, { useRef } from 'react';
+import React  from 'react';
 import { StyleSheet, TouchableOpacity ,ScrollView,Text,View} from 'react-native';
 import TopContainer from '../components/TopContainer/TopContainer';
 import RandevuContainer from '../components/RandevuContainer/RandevuContainer';
@@ -21,10 +21,15 @@ export default function HomeScreen() {
       
           </ScrollView>
         
+        
          
       </View>
   );
 }
+
+/*
+  <
+*/
 
 
 

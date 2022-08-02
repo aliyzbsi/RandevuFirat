@@ -24,8 +24,7 @@ import ProfilePicture from '../components/ProfilePicture/ProfilePicture';
 //import LinkingConfiguration from './LinkingConfiguration';
 import { Dimensions} from "react-native";
       const screenHeight = Dimensions.get('screen').height;
-      const windowHeight = Dimensions.get('window').height;
-      const navbarHeight = screenHeight - windowHeight-5
+      const navbarHeight = screenHeight*0.11 ;
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
