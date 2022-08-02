@@ -6,6 +6,7 @@ import RandevuContainer from '../components/RandevuContainer/RandevuContainer';
 
 import randevuData from '../data/RandevuData';
 
+
 export default function HomeScreen() {
 
   return (
@@ -24,6 +25,8 @@ export default function HomeScreen() {
       </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

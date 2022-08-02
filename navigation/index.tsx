@@ -6,6 +6,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import {ColorSchemeName, Pressable, View, Image,Text } from "react-native";
+import {createDrawerNavigator} from '@react-navigation/drawer'
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -19,7 +20,12 @@ import CalendarScreen from "../screens/CalendarScreen";
 import RequestScreen from "../screens/RequestScreen";
 
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
+import ProfilePicture from '../components/ProfilePicture/ProfilePicture';
 //import LinkingConfiguration from './LinkingConfiguration';
+import { Dimensions} from "react-native";
+      const screenHeight = Dimensions.get('screen').height;
+      const windowHeight = Dimensions.get('window').height;
+      const navbarHeight = screenHeight - windowHeight-5
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -39,12 +45,22 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+     <Stack.Screen name='Drwer' component={CalendarScreen} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={SettingsScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
 }
+
+const Drawer =createDrawerNavigator();
+function  DrawerNavigator(){
+    <Drawer.Navigator>
+         <Drawer.Screen name='Settings' component={SettingsScreen}/>
+    </Drawer.Navigator>
+}
+
+
 
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
@@ -53,7 +69,7 @@ function BottomTabNavigator() {
  
   return (
       <BottomTab.Navigator
-       // initialRouteName="Home"
+        initialRouteName="Home"
         screenOptions={{
           tabBarActiveBackgroundColor:'#fff',
           tabBarStyle: { position: "absolute", marginBottom: 2, height: "8%" },
@@ -77,7 +93,8 @@ function BottomTabNavigator() {
               marginRight:10,
              },
              headerStyle:{
-               backgroundColor:Colors.light.tint
+               backgroundColor:Colors.light.tint,
+               height:navbarHeight
              },
             tabBarIcon: ({ focused }) => (
               <Ionicons
@@ -97,7 +114,11 @@ function BottomTabNavigator() {
             ),
            
             headerTitle:()=>(
-               <Text style={{fontSize:20 , fontWeight:'bold', color:Colors.light.white}}>Fırat Üniversitesi</Text>
+            
+                        <Text style={{fontSize:20 , fontWeight:'bold', color:Colors.light.white}}>Fırat Üniversitesi</Text>
+           
+              
+              
             ), 
   
             headerTitleAlign:'left',
@@ -163,7 +184,7 @@ function BottomTabNavigator() {
                   }}
                 />
                 <Text
-                  style={{color:focused? '#fff':'#fff',height:60}}
+                  style={{color:focused? '#fff':'#fff',height:'100%'}}
                 > Merhaba </Text>
               </View>
               </Pressable>
