@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
       padding:2,
       alignItems:'center',
       alignSelf:'center',
-     margin:2
+      margin:2
     },
     saat:{
       flex:1,

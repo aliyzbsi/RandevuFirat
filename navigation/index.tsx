@@ -2,10 +2,10 @@
 import { FontAwesome, Ionicons,
   MaterialCommunityIcons, } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme ,DrawerActions} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import {ColorSchemeName, Pressable, View, Image,Text } from "react-native";
+import {ColorSchemeName, Pressable, View, Image,Text ,Dimensions, BackHandler} from "react-native";
 import {createDrawerNavigator} from '@react-navigation/drawer'
 
 import Colors from '../constants/Colors';
@@ -13,18 +13,19 @@ import useColorScheme from '../hooks/useColorScheme';
 import SettingsScreen from '../screens/SettingsScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
 import RandevuAl from "../screens/RandevuAl";
 import NotificationScreen from "../screens/NotificationScreen";
 import CalendarScreen from "../screens/CalendarScreen";
 import RequestScreen from "../screens/RequestScreen";
 
+
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
-import ProfilePicture from '../components/ProfilePicture/ProfilePicture';
+import { ScreenStackHeaderRightView } from 'react-native-screens';
 //import LinkingConfiguration from './LinkingConfiguration';
-import { Dimensions} from "react-native";
+
+
       const screenHeight = Dimensions.get('screen').height;
-      const navbarHeight = screenHeight*0.11 ;
+      const navbarHeight = screenHeight*0.12 ;
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -44,19 +45,12 @@ function RootNavigator() {
     <Stack.Navigator>
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-     <Stack.Screen name='Drawer' component={RequestScreen} />
+       <Stack.Screen name='Settings' component={SettingsScreen} options={{headerTitle:'Ayarlar',headerStyle:{backgroundColor:Colors.light.tint},headerTitleStyle:{fontSize:25}}}  />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={SettingsScreen} />
+          <Stack.Screen name="Modal" component={SettingsScreen} /> 
       </Stack.Group>
     </Stack.Navigator>
   );
-}
-
-const Drawer =createDrawerNavigator();
-function  DrawerNavigator(){
-    <Drawer.Navigator>
-         <Drawer.Screen name='Settings' component={SettingsScreen}/>
-    </Drawer.Navigator>
 }
 
 
@@ -65,7 +59,6 @@ function  DrawerNavigator(){
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
- 
   return (
       <BottomTab.Navigator
         initialRouteName="Home"
@@ -75,6 +68,7 @@ function BottomTabNavigator() {
           // tabBarActiveTintColor:Colors.light.tint,
           tabBarShowLabel: false,
           tabBarInactiveBackgroundColor :'#fff'
+    
           
         }}
       >
@@ -90,11 +84,13 @@ function BottomTabNavigator() {
              headerRightContainerStyle:{
               marginLeft:15,
               marginRight:10,
+              padding:2
              },
              headerStyle:{
                backgroundColor:Colors.light.tint,
                height:navbarHeight
              },
+             headerTitleAlign:'center',
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 name="ios-home"
@@ -107,31 +103,29 @@ function BottomTabNavigator() {
                 }}
               />
             ),
-            headerLeft:()=>(
-               <MaterialCommunityIcons name="playlist-edit" size={30}  color={Colors.light.white}/>
-               
-            ),
-           
+          
+            
             headerTitle:()=>(
             
-                        <Text style={{fontSize:20 , fontWeight:'bold', color:Colors.light.white}}>Fırat Üniversitesi</Text>
-           
-              
-              
+                        <Text style={{fontSize:20 , fontWeight:'bold', color:Colors.light.white,marginBottom:5}}>Fırat Üniversitesi</Text>
+             
             ), 
-  
-            headerTitleAlign:'left',
+            headerLeft:()=>(
+                <MaterialCommunityIcons name='playlist-edit' color={Colors.light.white} size={30}/> 
+            
+            ),
   
             headerRight: () => (
               <Pressable
-                onPress={() => navigation.navigate('Calendar')}
+                onPress={() => navigation.navigate('Settings')}
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                   marginRight:10,
+                
                 })}>
-                <MaterialCommunityIcons
-                 name="account-edit"
-                 size={32}
+                <Ionicons
+                 name="settings"
+                 size={30}
                  color="#444444"
                 />
               </Pressable>
@@ -143,7 +137,17 @@ function BottomTabNavigator() {
           name="Calendar"
           component={CalendarScreen}
           options={{
-            title: "Calendar Screen",
+            
+           // title: "Calendar Screen",
+            headerStyle:{  //kod tekrarı var 
+              backgroundColor:Colors.light.tint,
+              height:navbarHeight
+            },
+          headerTitle:()=>(
+            <Text style={{fontSize:20,fontWeight:'bold',color:Colors.light.white,margin:2,marginBottom:5}}>Randevu Takvimi </Text>
+          ),
+
+          headerTitleAlign:'center',
             tabBarIcon: ({ focused }) => (
               <FontAwesome
                 name="calendar"
@@ -164,8 +168,13 @@ function BottomTabNavigator() {
         <BottomTab.Screen
           name="Randevu"
           component={RandevuAl}
+          
           options = {({navigation}:RootTabScreenProps<'Randevu'>) =>({ 
             title: "seacrh for appointment",
+            headerStyle:{  //kod tekrarı var 
+              backgroundColor:Colors.light.tint,
+              height:navbarHeight
+            },
             
             tabBarIcon: ({ focused }) => (
               <Pressable
@@ -194,7 +203,16 @@ function BottomTabNavigator() {
           name="Notification"
           component={NotificationScreen}
           options={{
-            title: "Notification Screen",
+
+            headerStyle:{  //kod tekrarı var 
+              backgroundColor:Colors.light.tint,
+              height:navbarHeight
+            },
+            headerTitleAlign:'center',
+            headerTitle:()=>(
+              <Text style={{fontSize:20,fontWeight:'bold',color:Colors.light.white,margin:2,marginBottom:5}}> Bildirimler  </Text>
+            ),
+
             tabBarIcon: ({ focused }) => (
               <Ionicons
                 name="notifications"
@@ -213,7 +231,15 @@ function BottomTabNavigator() {
           name="RequestScreen"
           component={RequestScreen}
           options={{
-            title: "gelen randevu isteklerim ",
+          //  title: "gelen randevu isteklerim ",
+            headerStyle:{  //kod tekrarı var 
+              backgroundColor:Colors.light.tint,
+              height:navbarHeight
+            },
+            headerTitleAlign:'center',
+            headerTitle:()=>(
+              <Text style={{fontSize:20,fontWeight:'bold',color:Colors.light.white,margin:2,marginBottom:5}}> Onaylanan Randevular   </Text>
+            ),
             tabBarIcon: ({ focused }) => (
               <MaterialCommunityIcons
                 name="playlist-check"

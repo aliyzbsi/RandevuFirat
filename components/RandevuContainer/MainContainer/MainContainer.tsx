@@ -24,9 +24,10 @@ const styles = StyleSheet.create({
     container: {
       backgroundColor:Colors.light.white,
       flex: 1,
-      marginLeft:5,
       padding:2,
-      
+      borderTopRightRadius:20,
+      borderBottomRightRadius:20,
+      paddingLeft:3
     },
     title:{
         fontSize:15,

@@ -18,6 +18,7 @@ const RandevuData =[
       department_r:'yazılım Mühendisliği',
       faculty_r:'mühendislik Fakültesi',
       campus_r:'Mühendislik Kampüsü',
+      stuation:'iptal edildi'
 
     },
     {
@@ -32,6 +33,7 @@ const RandevuData =[
           campus:'Mühendislik Kampüsü',
           
       },
+      stuation:' 11-05-07 tarihine ertelendi',
       randevuTarih: 'Mart 13',
       randevuSaati:'17.00',
       email_r:'mustafaulas@firat.edu.Tr',
@@ -54,6 +56,7 @@ const RandevuData =[
           faculty:'Enginering Faculty',
           campus:'Mühendislik Kampüsü',
       },
+      stuation:' 11-05-07 tarihine ertelendi',
       randevuTarih: 'Mart 16',
       randevuSaati:'17.00',
       email_r:'mustafaulas@firat.edu.Tr',
@@ -76,6 +79,7 @@ const RandevuData =[
           faculty:'Enginering Faculty',
           campus:'Mühendislik Kampüsü',
       },
+      stuation:' 11-05-07 tarihine ertelendi',
       randevuTarih: 'Mart 20',
       randevuSaati:'17.00',
       email_r:'mustafaulas@firat.edu.Tr',
@@ -98,6 +102,7 @@ const RandevuData =[
           faculty:'Enginering Faculty',
           campus:'Mühendislik Kampüsü',
       },
+      stuation:' güncellendi',
       randevuTarih:'Nisan 20',
       randevuSaati:'17.00',
       email_r:'mustafaulas@firat.edu.Tr',
@@ -119,6 +124,7 @@ const RandevuData =[
           faculty:'Enginering Faculty',
           campus:'Mühendislik Kampüsü',
       },
+      stuation:' güncellendi',
       randevuTarih: 'Aralık 1',
       randevuSaati:'17.00',
       email_r:'mustafaulas@firat.edu.Tr',
@@ -140,6 +146,7 @@ const RandevuData =[
           faculty:'Enginering Faculty',
           campus:'Mühendislik Kampüsü',
       },
+      stuation:' güncellendi',
       randevuTarih: 'Nisan 1',
       randevuSaati:'17.00',
       email_r:'mustafaulas@firat.edu.Tr',

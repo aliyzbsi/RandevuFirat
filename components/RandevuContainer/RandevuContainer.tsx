@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
       borderRadius:15,
       height:100,
       width:280,
-      marginRight:30,
+      marginRight:50,
       marginLeft:50,
       margin:5,
 

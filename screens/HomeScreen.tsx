@@ -30,7 +30,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white'
+   // backgroundColor:'white',
+    marginBottom:5
 
   },
   title: {
@@ -41,13 +42,15 @@ const styles = StyleSheet.create({
     color:'#444444',
 
   },
-  scrollview:{
-    flex:1,
-    
-  },
+  
   listContainer:{
     flex:1,
-    margin:10
+    margin:'auto',
+    marginBottom:80,
+    justifyContent:'center',
+    alignItems:'center',
+    paddingRight:30
+
   }
  
 });

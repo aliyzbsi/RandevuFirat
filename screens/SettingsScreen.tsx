@@ -1,36 +1,72 @@
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet,Dimensions, TextInput ,TouchableOpacity, Button} from 'react-native';
+import React from 'react';
+import { Text, View } from  'react-native'
+import {  RootStackScreenProps } from '../types';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import Colors from '../constants/Colors';
 
-import React  from 'react';
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+function SettingsScreen ({navigation}:RootStackScreenProps<'Settings'>){
 
-export default function ModalScreen() {
-  return (
+   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ModalScreen.tsx" />
+       
+       <View style ={styles.properties}>
+         <View style={styles.innerContainer}>
+            <Ionicons name='language' color='#444444' size={30}/>
+              <Text style={styles.text}> Dil </Text>
+         </View>
+              
+         <View style={styles.innerContainer}>
+            <MaterialCommunityIcons name='lock' color='#444444' size={30}/>
+              <Text style={styles.text}> Şifre Değiştirme </Text>
+         </View>
 
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+         <View style={styles.innerContainer}>
+            <MaterialCommunityIcons name='theme-light-dark' color='#444444' size={30}/>
+              <Text style={styles.text}> Tema  </Text>
+         </View>
+       </View>
+     
+   
+ 
+    <View style={styles.footer}>
+      <Button  title ='Ansayfaya Dön'onPress={()=>navigation.navigate('Root')} color={Colors.light.tint} />
+    </View >
+       
+      
+       
     </View>
-  );
-}
+   )
+ }
+
+
+ export default SettingsScreen ;
+
+
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+
+  container:{
+   flex:1,
+   
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  properties:{
+    marginVertical:20,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+
+ text:{
+  fontSize:20,
+  margin:5
+ },
+ innerContainer:{
+  flexDirection:'row',
+  marginLeft:20,
+  margin:10
+ },
+ footer:{
+  flex:0.10,
+  marginTop:'auto',
+
+ }
+  
 });

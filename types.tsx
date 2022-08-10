@@ -17,7 +17,8 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
   NotFound: undefined;
-  Drawer:undefined;
+  Settings:undefined;
+  
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
@@ -31,8 +32,7 @@ export type RootTabParamList = {
   Home: undefined;
   Notification:undefined;
   Randevu :undefined;
-  Settings:undefined;
-  
+ // Settings:undefined;
 };
 
 
@@ -40,10 +40,10 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
   BottomTabScreenProps<RootTabParamList, Screen>,
   NativeStackScreenProps<RootStackParamList>
   > 
-
-
+ 
   // declared types of datas 
  
+
  export type UserType ={
   id:string,
   name: string ,
@@ -59,6 +59,7 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> = Composit
 export type RandevuType={
   randevuSaati?:string,
   randevuTarih?:string,
+  stuation:string,
   user:UserType,
       email_r:string,
       name_r:string,
