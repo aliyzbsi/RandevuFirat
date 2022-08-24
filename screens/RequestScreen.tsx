@@ -1,8 +1,8 @@
+import * as React from 'react';
+import { FlatList, StyleSheet, TouchableOpacity,Text,View } from 'react-native';
 
-import { FlatList, StyleSheet, TouchableOpacity } from 'react-native';
-import React from 'react';
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+
 import { RootTabScreenProps } from '../types';
 import RequestsData from '../data/RandevuData';
 import RequestsContainer from '../components/RequestsContainer/RequestsContainer';
